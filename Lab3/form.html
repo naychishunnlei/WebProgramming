@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Information Form</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        form {
+            margin: auto;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .main {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #2fd14a;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #28b841;
+        }
+    </style>
+    <script src="./Lab.js"></script>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td rowspan="3" class="main">
+                    <img src="profile.jpg" alt="Profile Picture" width="200">
+                </td>
+                <td class="main">
+                    <h4>Personal Information</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="John Doe">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="age">Age:</label>
+                    <input type="range" name="age" id="age" min="0" max="100" onchange="updateAgeValue()">
+                    <span id="ageValue">50</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="profile">Profile:</label>
+                    <textarea name="profile" id="profile" cols="30" rows="5"></textarea>
+                </td>
+                <td>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="example@email.com">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" name="phone" id="phone" placeholder="092-345-6799">
+                </td>
+            </tr>
+            <tr>
+                <td class="main">
+                    <h4>Address:</h4>
+                </td>
+                <td class="main">
+                    <h4>Education:</h4>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3">
+                    <label for="street">Street:</label>
+                    <input type="text" name="street" id="street" placeholder="Maple Street">
+                    <label for="city">City:</label>
+                    <input type="text" name="city" id="city" placeholder="California">
+                    <label for="country">Country:</label>
+                    <select name="country" id="country">
+                    </select>
+                </td>
+                <td>
+                    <label for="university">University:</label>
+                    <input type="text" name="university" id="university" placeholder="KMITL">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="degree">Degree:</label>
+                    <input type="text" name="degree" id="degree" placeholder="Software Engineering">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="graduationYear">Year of Graduation:</label>
+                    <input type="date" name="graduationYear" id="graduationYear">
+                </td>
+            </tr>
+            <tr>
+                <td class="main">
+                    <h4>Contacts:</h4>
+                </td>
+                <td class="main">
+                    <h4>Skills & Experience:</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="ref">Reference:</label>
+                    <textarea name="ref" id="ref" cols="30" rows="5"></textarea>
+                </td>
+                <td>
+                    <label for="skills">Skills:</label>
+                    <textarea name="skills" id="skills" cols="30" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="favColour">Favorite Colour:</label>
+                    <input type="color" name="favColor" id="favColour">
+                </td>
+                <td>
+                    <label for="experience">Experience:</label>
+                    <textarea name="experience" id="experience" cols="30" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" id="btn" onclick="displayResume()">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+
+</html>

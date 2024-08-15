@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container{
+            width: 794px;  /* A4 width in pixels */
+            height: 1123px; /* A4 height in pixels */
+            border: 1px solid black;
+            margin: auto;
+            padding: 20px;
+            display: block;
+            box-sizing: border-box;
+            overflow: hidden;  /* Prevent resizing */
+        }
+
+        .photobox {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        p{
+            text-align: center;
+        }
+
+        table{
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        #name, #dob, #id, #admission, #grad, #degree, #major {
+            width: 100%;
+            font-size: 12px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .head label {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .body th, .body td {
+            font-size: 10px;
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .body input[type=text] {
+            font-size: 10px;
+            border: 1px solid black;
+            text-transform: uppercase;
+            width: 100%;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+
+        .course {
+            width: 70%;
+        }
+
+        .credit, .grade {
+            width: 15%;
+        }
+
+        @media print {
+            .container {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            table {
+                width: 100%;
+                table-layout: fixed;
+            }
+
+            .photobox {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <div class="container">
+        <table class="head">
+            <tr>
+                <th colspan="20">
+                    <h3>(Unofficial Transcript)</h3>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="17"><p>School of Engineering</p></td>
+                <td class="photobox">
+                    Photo
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Mr./Miss Nxxxx Xxxxxxx">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="dob">Date of Birth</label>
+                    <input type="text" name="dob" id="dob" placeholder="MMMM DD.20xx">
+                </td>
+                <td colspan="7">
+                    <label for="id">Student ID</label>
+                    <input type="text" name="id" id="id" placeholder="65xxxxxx">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="admission">Date of Admission</label>
+                    <input type="text" name="admission" id="admission" placeholder="20xx">
+                </td>
+                <td colspan="7">
+                    <label for="grad">Graduation</label>
+                    <input type="text" name="grad" id="grad" placeholder="N/A">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="degree">Degree</label>
+                    <input type="text" name="degree" id="degree" placeholder="Bachelor of Engineering">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="major">Major</label>
+                    <input type="text" name="major" id="major" placeholder="Software Engineering">
+                </td>
+            </tr>
+        </table>
+        <table class="body">
+            <tr>
+                <th class="course">Course Title</th>
+                <th class="credit">Credit</th>
+                <th class="grade">Grade</th>
+            </tr>
+            <!-- Add course rows as needed -->
+        </table>
+    </div>
+</form>
+</body>
+</html>

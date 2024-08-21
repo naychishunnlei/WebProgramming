@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container{
+            border: 1px solid black;
+            margin: auto;
+            padding: 20px;
+            display: inline-block;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .photobox {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        p{
+            text-align: center;
+        }
+
+        table{
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        #name {
+            width: 55%;
+        }
+
+        #dob, .bcredit, .bgrade{
+            width: 45%;
+        }
+
+        #id, #admission {
+            width: 25%;
+        }
+
+        #grad, .gpa, #totalcredits{
+            width: 10%;
+        }
+
+        .code {
+            width: 15%;
+        }
+
+        .title {
+            width: 75%;
+        }
+
+        .head label {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .body p {
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+
+        }
+
+        .body th {
+            font-size: 10px;
+            text-transform: uppercase;
+            border: 1px solid black;
+        }
+
+        .body td.course {
+            border-left: 1px solid black;
+        }
+
+        .body td.credit, .body td.grade {
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .body input[type=text] {
+            font-size: 8px;
+            font-weight: bold;
+            border: 2px solid black;
+            text-transform: uppercase;
+        }
+
+        .credit input[type=text], .grade input[type=text] {
+            text-align: center;
+            margin: auto;
+        }
+
+        .course {
+            width: 35%;
+            word-wrap: break-word;
+        }
+
+        .credit, .grade {
+            width: 5%;
+        }
+
+        .last-row {
+            border-bottom: 1px solid black;
+        }
+
+        .submit-button {
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin-right: 10px;
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+<form action="">
+    <div class="container">
+        <table class="head">
+            <tr>
+                <th colspan="20">
+                    <h3>(Unofficial Transcript)</h3>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="17"><p>School of Engineering</p></td>
+                <td class="photobox">
+                    Photo
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="20"></td>
+            </tr>
+            <tr>
+                <td colspan="20"></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Mr./Miss Nxxxx Xxxxxxx">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="dob">Date of Birth</label>
+                    <input type="text" name="dob" id="dob" placeholder="MMMM DD.20xx">
+                </td>
+                <td colspan="7">
+                    <label for="id">Student ID</label>
+                    <input type="text" name="id" id="id" class="small" placeholder="65xxxxxx">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="admission">Date of Admission</label>
+                    <input type="text" name="admission" id="admission" placeholder="20xx">
+                </td>
+                <td colspan="7">
+                    <label for="grad">Graduation</label>
+                    <input type="text" name="grad" id="grad" placeholder="N/A">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="degree">Degree</label>
+                    <input type="text" name="degree" id="degree" placeholder="Bachelor of Engineering">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="major">Major</label>
+                    <input type="text" name="major" id="major" placeholder="Software Engineering">
+                </td>
+            </tr>
+        </table>
+        <table class="body">
+            <tr>
+                <th class="course" colspan="9">Course Title</th>
+                <th class="credit" colspan="1">Credit</th>
+                <th class="grade" colspan="1">Grade</th>
+                <th class="course" colspan="9">Course Title</th>
+                <th class="credit" colspan="1">Credit</th>
+                <th class="grade" colspan="1">Grade</th>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p><u>Transfer Credit</u></p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006208">
+                    <input type="text" class="title" placeholder="Academic English 1">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006209">
+                    <input type="text" class="title" placeholder="Academic English 2">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p><label for="gpa"><i>GPA:</i></label>
+                    <input type="text" class="gpa" placeholder="X.XX"></p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p><u>1st Semester, Year, 2021-2022</u></p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006007">
+                    <input type="text" class="title" placeholder="Calculus 1">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006107">
+                    <input type="text" class="title" placeholder="Introduction to Computers and Programming">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="4">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006108">
+                    <input type="text" class="title" placeholder="Basic Electricity and Electronics">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006301">
+                    <input type="text" class="title" placeholder="Introduction to Logic">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006235">
+                    <input type="text" class="title" placeholder="C Programming">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006236">
+                    <input type="text" class="title" placeholder="C Programming Laboratory">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="1">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p>
+                        <label for="gpa"><i>GPS:</i></label>
+                        <input type="text" class="gpa" placeholder="X.XX">
+
+                        <label for="gpa"><i>GPA:</i></label>
+                        <input type="text" class="gpa" placeholder="X.XX">
+                    </p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p><u>2nd Semester, Year, 2021-2022</u></p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006008">
+                    <input type="text" class="title" placeholder="Calculus 2">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006303">
+                    <input type="text" class="title" placeholder="Cultural Studies">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006105">
+                    <input type="text" class="title" placeholder="Discrete Mathematics">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006204">
+                    <input type="text" class="title" placeholder="Digital Circuit and Logic Design">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006205">
+                    <input type="text" class="title" placeholder="Digital Circuit Laboratory">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="1">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006209">
+                    <input type="text" class="title" placeholder="Object-oriented Concepts and Programming">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006210">
+                    <input type="text" class="title" placeholder="Object-oriented Programming Laboratory">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="1">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p>
+                        <label for="gpa"><i>GPS:</i></label>
+                        <input type="text" class="gpa" placeholder="X.XX">
+
+                        <label for="gpa"><i>GPA:</i></label>
+                        <input type="text" class="gpa" placeholder="X.XX">
+                    </p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p><u>1st Semester, Year, 2022-2023</u></p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006006">
+                    <input type="text" class="title" placeholder="Linear Algebra">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006210">
+                    <input type="text" class="title" placeholder="Technical Writing">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006403">
+                    <input type="text" class="title" placeholder="Business Administration">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006207">
+                    <input type="text" class="title" placeholder="Computer Organization and Assembly Language">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006208">
+                    <input type="text" class="title" placeholder="Computer Organization and Assembly Language Laboratory">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="1">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006212">
+                    <input type="text" class="title" placeholder="Data Structures and Algorithms">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006213">
+                    <input type="text" class="title" placeholder="Data Structures and Algorithms Laboratory">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="1">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <input type="text" class="code" placeholder="13006249">
+                    <input type="text" class="title" placeholder="Advanced Object-oriented Programming">
+                </td>
+                <td class="credit" colspan="1">
+                    <input type="text" class="bcredit" placeholder="3">
+                </td>
+                <td class="grade" colspan="1">
+                    <input type="text" class="bgrade" placeholder="X">
+                </td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p>
+                        <label for="gpa"><i>GPS:</i></label>
+                        <input type="text" class="gpa" placeholder="X.XX">
+
+                        <label for="gpa"><i>GPA:</i></label>
+                        <input type="text" class="gpa" placeholder="X.XX">
+                    </p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9">
+                    <p>
+                        <label for="totalcredits">Total number of credits earned:</label>
+                        <input type="text" id="totalcredits" placeholder="XX">
+                    </p>
+                </td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr class="last-row">
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+                <td class="course" colspan="9"></td>
+                <td class="credit" colspan="1"></td>
+                <td class="grade" colspan="1"></td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr>
+                <td colspan="20"></td>
+                <td>
+                    <button class="submit-button">Submit</button>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.left {
+    width: 40%;
+    background-color: #b9d7f7;
+    padding: 20px;
+}
+
+.right {
+    width: 60%;
+    background-color: #f9edde;
+    padding: 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    background-color: #f58a59;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin: 10px;
+    border-bottom: 2px solid #333;
+}
+
+h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333 ;
+}
+
+p{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about p{
+    text-align: left;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.section ul {
+    list-style: none;
+}
+
+.section ul li {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.about p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.experience {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto;
+    gap: 5px 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.position {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.company {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.experience .year {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    font-weight: bold;
+}
+
+.experience .description {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.education {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto;
+    gap: 5px 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.education .year {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.degree {
+    grid-column: 2;
+    grid-row: 1;
+    font-weight: bold;
+}
+
+.institution {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.education .description {
+    grid-column: 2;
+    grid-row: 3;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0;
+        }
+
+        th{
+            border: 1px solid black;
+            background-color: rgb(255, 209, 124);
+            text-align: left;
+            font-weight: normal;
+        }
+        td{
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Shopping List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Amount</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+
+    </table>
+
+    <button onclick="reset" id="reset">Reset List</button>
+
+    <h3>Add Item</h3>
+
+    <label for="name">Name</label>
+    <input type="text" id="name"><br>
+    <label for="amount">Amount</label>
+    <input type="text" id="amount"><br>
+    <label for="price">Price</label>
+    <input type="text" id="price"><br>
+
+    <button onclick="addData" id="add">Add</button>
+    <button onclick="removeData" id="clear">Clear</button>
+
+    <script>
+        var body = document.getElementById("tbody");
+        var reset = document.getElementById("reset");
+        var data = document.getElementById("add");
+        var clear = document.getElementById("clear");
+        function addData() {
+            var name = document.getElementById("name").value;
+            var amount = document.getElementById("amount").value;
+            var price = document.getElementById("price").value;
+
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                            <td>${name}</td>
+                            <td>${amount}</td>
+                            <td>${price}</td>`;
+            tbody.appendChild(tr);
+        }
+
+        data.addEventListener("click", (e)=>{
+            e.preventDefault();
+            addData();
+        })
+
+        clear.addEventListener("click", (e)=>{
+            e.preventDefault();
+            document.getElementById("name").value = "";
+            document.getElementById("amount").value ="";
+            document.getElementById("price").value= "";
+        })
+
+        reset.addEventListener("click", (e)=>{
+            e.preventDefault();
+            tbody.innerHTML= "";
+        })
+
+    </script>
+
+</body>
+</html>

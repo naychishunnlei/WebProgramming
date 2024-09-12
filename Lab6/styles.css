@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calendar-container {
+    
+    border-radius: 10px;
+   
+    padding: 20px;
+    width: 350px;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    
+}
+
+.day-name, .day {
+    text-align: center;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+.day {
+    background-color: #f9f9f9;
+}
+
+.day:hover {
+    background-color: #b0c4de;
+    cursor: pointer;
+}

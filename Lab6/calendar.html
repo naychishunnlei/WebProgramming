@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>August 2024 Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <h1>August 2024</h1>
+        </div>
+        <div class="calendar-grid" id="calendar-grid">
+            
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const calendarGrid = document.getElementById('calendar-grid');
+    
+    
+    const startDay = 4;
+    const daysInMonth = 31;
+    
+    
+    for (let i = 0; i < startDay; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.classList.add('day');
+        calendarGrid.appendChild(emptyDiv);
+    }
+
+    
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.classList.add('day');
+        dayDiv.textContent = day;
+        calendarGrid.appendChild(dayDiv);
+    }
+});
+    </script>
+</body>
+</html>

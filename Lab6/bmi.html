@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BMI</title>
+    </head>
+    <style>
+        table{
+           
+            display: none;
+            border-collapse: collapse;
+        }
+        table td{
+            /* display: none; */
+            border: 1px solid black;
+            
+            padding: 5px 1px;
+        }
+        th{
+            border: 1px solid black;
+            background: blue;
+        }
+        .highlight{
+            background-color: none;
+        }
+        
+       
+
+    </style>
+    <body>
+        <div>
+            <form action="" method="">
+                <h3>BMI Calculator</h3>
+                <!-- <div>
+                    <label for="name">Name-surname</label>
+                    <input type="text" id="name" name="name"/>
+                </div>
+                <div>
+                    <label>Gender</label>
+                    <input type="radio" id="male" name="male" value="male"/><label>male</label>
+                    <input type="radio" id="female" name="female" value="female"/><label>female</label>
+                </div> -->
+                <div>
+                    <label for="w">Weight(kg)</label>
+                    <input type="text" id="w" name="w"/>
+                </div>
+                <div>
+                    <label for="h">Height(cm)</label>
+                    <input type="text" id="h" name="h"/>
+                </div>
+                <button type="submit" id="btn">Calculate</button>
+            </form>
+        </div>
+        <div>
+            <h4>BMI result</h4>
+            <p id="brief">No result</p>
+            <b><p id="text"></p></b>
+        </div>
+            
+        <div>
+            <table id="table">
+                <tr>
+                    <th>BMI</th>
+                    <th>Interpretation</th>
+                </tr>
+                <tr data-min="0" data-max="18.4">
+                    <td>Below 18.5</td>
+                    <td class="type">Underweight</td>
+                </tr>
+                <tr data-min="18.5" data-max="24.9">
+                    <td>18.5-24.9</td>
+                    <td class="type">Normal</td>
+                </tr>
+                <tr data-min="25.0" data-max="29.9">
+                    <td>25.0-29.9</td>
+                    <td class="type">Overweight</td>
+                </tr>
+                <tr data-min="30.0" data-max="60.0">
+                    <td>30.0 or greater</td>
+                    <td class="type">Obese</td>
+                </tr>
+            </table>
+        </div>
+        
+        
+    </body>
+    <script>
+        const weight = document.getElementById("w");
+        const height = document.getElementById("h");
+        const btn = document.getElementById("btn");
+        const table = document.getElementById("table");
+        const text = document.getElementById("text");
+        const brief = document.getElementById("brief");
+
+        function calcBMI(){
+            let w = parseFloat(weight.value);
+            let h = parseFloat(height.value);
+            let bmi = w / (h * h);
+            console.log(bmi);
+           
+            return bmi;
+        }
+        function highlight(bmi){
+            let texting = "";
+            const rows = document.getElementsByTagName("tr");
+            
+            for(let i = 0; i < rows.length; i++){
+                rows[i].classList.remove("highlight");
+            }
+        
+            for(let i = 0; i < rows.length; i++){
+                let min = parseFloat(rows[i].getAttribute("data-min"));
+                let max = parseFloat(rows[i].getAttribute("data-max"));
+                
+                if(bmi >= min && bmi <= max){
+                    rows[i].classList.add("highlight");
+                    texting += rows[i].firstElementChild.nextElementSibling.innerText;
+                    break;
+                }
+                
+            }
+            return texting;
+            
+            
+        }
+
+        btn.addEventListener("click", (e)=>{
+            e.preventDefault();
+            if(weight.value == "" || height.value == ""){
+                window.alert("Please enter value");
+                return;
+            }
+            let bmi = calcBMI();
+            table.style.display = "block";
+            let high = highlight(bmi);
+            text.innerText = `you are ${high}`;
+            brief.innerHTML = `With your weight of ${weight.value}kg and height of ${height.value}cm.Your BMI is ${bmi}`
+            
+        })
+    </script>
+</html>

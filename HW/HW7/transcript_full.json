@@ -1,0 +1,41 @@
+{
+    "student_name": "Ms. Nay Chi Shunn Lei",
+    "date_of_birth": "February 25th 2002",
+    "student_id": "66011090",
+    "date_of_admission": "2023",
+    "date_of_graduation": "N/A",
+    "degree": "Bachelor of Engineering",
+    "major": "Software Engineering",
+    "credit": {
+        "Year, 2023-2024" : {
+            "1st Semester" : [
+                {
+                    "name": "Introduction to Calculus",
+                    "subject_id": "01006710",
+                    "credit": "3",
+                    "grade": "A"
+                },
+                {
+                    "name": "Circuits and Electronics",
+                    "subject_id": "01286111",
+                    "credit": "4",
+                    "grade": "B+"
+                }
+            ],
+            "2nd Semester" : [
+                {
+                    "name": "Differential Equations",
+                    "subject_id": "01006717",
+                    "credit": "3",
+                    "grade": "A"
+                },
+                {
+                    "name": "Discrete Mathematics",
+                    "subject_id": "01006718",
+                    "credit": "3",
+                    "grade": "C+"
+                }
+            ]
+        }
+    }
+}

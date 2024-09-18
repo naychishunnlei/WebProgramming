@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unofficial Transcript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .head label {
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        .photobox img {
+            width: 100%;
+            height: 50%;
+            object-fit: fill;
+            border-radius: 50%;
+        }
+
+        tbody {
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .transcript-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .transcript-table th {
+            border: 1px solid black;
+            text-transform: uppercase;
+            font-size: 15px;
+            padding: 8px;
+        }
+
+        .transcript-table td {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            padding: 8px;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        .transcript-table tr:last-child td {
+            border-bottom: 1px solid black;
+        }
+
+        .transcript-table tr:last-child td:last-child {
+            border-right: 1px solid black;
+        }
+
+        .year td, .gpa td {
+            text-align: center;
+        }
+
+        .file-upload {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="transcript">
+        <table class="head">
+            <tr>
+                <th colspan="20">
+                    <h3>(Unofficial Transcript)</h3>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="17"><p>School of Engineering</p></td>
+                <td class="photobox"><img src="stuprofile.jpg" alt="Student Photo"></td>
+            </tr>
+
+            <tr>
+                <td colspan="20"></td>
+            </tr>
+            <tr>
+                <td colspan="20"></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="studentName">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="dob">Date of Birth</label>
+                    <input type="text" name="dob" id="dob">
+                </td>
+                <td colspan="7">
+                    <label for="id">Student ID</label>
+                    <input type="text" name="id" id="studentId" class="small">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="admission">Date of Admission</label>
+                    <input type="text" name="admission" id="dateOfAdmission">
+                </td>
+                <td colspan="7">
+                    <label for="grad">Graduation</label>
+                    <input type="text" name="grad" id="dateOfGraduation">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="degree">Degree</label>
+                    <input type="text" name="degree" id="degree">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <label for="major">Major</label>
+                    <input type="text" name="major" id="major">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="transcriptContent"></div>
+
+    <div class="file-upload">
+        <label for="upload">Import Transcript:</label>
+        <input type="file" id="upload" accept="application/json" onchange="loadFile(event)">
+    </div>
+
+    <script>
+        let studentData = {};
+
+        function loadFile(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            reader.onload = function() {
+                studentData = JSON.parse(reader.result);
+                populateStudentInfo();
+                renderTranscript();
+            };
+            reader.readAsText(input.files[0]);
+        }
+
+        function populateStudentInfo() {
+            document.getElementById('studentName').value = studentData.student_name || 'N/A';
+            document.getElementById('dob').value = studentData.date_of_birth || 'N/A';
+            document.getElementById('studentId').value = studentData.student_id || 'N/A';
+            document.getElementById('dateOfAdmission').value = studentData.date_of_admission || 'N/A';
+            document.getElementById('dateOfGraduation').value = studentData.date_of_graduation || 'N/A';
+            document.getElementById('degree').value = studentData.degree || 'N/A';
+            document.getElementById('major').value = studentData.major || 'N/A';
+        }
+
+        function renderTranscript() {
+            let transcriptContentHTML = '<table class="transcript-table"><thead><tr><th>Course Title</th><th>Credit</th><th>Grade</th></tr></thead><tbody>';
+
+            for (const year in studentData.credit) {
+                for (const semester in studentData.credit[year]) {
+                    // Semester and Year row
+                    transcriptContentHTML += `
+                        <tr class="year">
+                            <td><strong><u>${semester}, ${year}</u></strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>`;
+                    
+                    studentData.credit[year][semester].forEach(course => {
+                        transcriptContentHTML += `
+                            <tr>
+                                <td>${course.subject_id}  ${course.name}</td>
+                                <td>${course.credit}</td>
+                                <td>${course.grade}</td>
+                            </tr>`;
+                    });
+
+                    const gpaResult = calculateGPA(studentData);
+                    transcriptContentHTML += `
+                        <tr class="gpa">
+                            <td><u><i>GPS: ${gpaResult.gps || 'XXX'}  GPA: ${gpaResult.gpa || 'XXX'}</i></u></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    `;
+
+                }
+            }
+
+            transcriptContentHTML += '</tbody></table>';
+
+            document.getElementById('transcriptContent').innerHTML = transcriptContentHTML;
+
+        }
+
+        function calculateGPA(student) {
+            let totalCredits = 0;
+            let totalPoints = 0;
+
+            const gradeToPoints = {
+                'A': 4.0,
+                'B+': 3.5,
+                'B': 3.0,
+                'C+': 2.5,
+                'C': 2.0,
+                'D+': 1.5,
+                'D': 1.0,
+                'F': 0.0
+            };
+
+            for (const year in student.credit) {
+                for (const semester in student.credit[year]) {
+                    student.credit[year][semester].forEach(course => {
+                        let grade = course.grade;
+                        let credit = parseFloat(course.credit);
+                        if (grade !== 'X') {
+                            totalCredits += credit;
+                            totalPoints += credit * gradeToPoints[grade];
+                        }
+                    });
+                }
+            }
+
+            let gpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : 'N/A';
+            return { gps: totalPoints.toFixed(2), gpa };
+        }
+    </script>
+
+</body>
+</html>

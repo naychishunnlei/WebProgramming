@@ -1,0 +1,35 @@
+<h2>Add New Assignment</h2>
+    <form id="assignment-form">
+        <input type="text" id="course" placeholder="Course" required>
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="date" id="due-date" required>
+        <textarea id="description" placeholder="Description"></textarea>
+        <button type="submit">Add Assignment</button>
+    </form>
+
+// Add new assignment
+document.getElementById('assignment-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const course = document.getElementById('course').value;
+    const title = document.getElementById('title').value;
+    const dueDate = document.getElementById('due-date').value;
+    const description = document.getElementById('description').value;
+
+    const newAssignment = {
+        course,
+        title,
+        due_date: dueDate,
+        description
+    };
+
+    await fetch('http://127.0.0.1:8000/assignments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newAssignment)
+    });
+
+    // Fetch and display the updated list of assignments
+    fetchAssignments();
+});

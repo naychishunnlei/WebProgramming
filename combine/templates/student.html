@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Side</title>
+        <link href="/static/student.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/styles.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+   
+    <body>
+        
+        <header>
+            <div class="nav">
+                <div class="img-container">
+                    <a href="/"><img src="/static/img/SE_logo_tranparent.svg"/></a>
+                    <div class="text-container">
+                        <span class="title-span">Software Engineering</span>
+                        <span class="kmitl">King Mongkut's Institute of Technology</span>
+                    </div>  
+                </div>
+            
+               
+                <nav id="nav">
+                    <ul id="nav-ul">
+                        <li><a href="#timetable">Academic Calendar</a><i class="fa-solid fa-chevron-down" id="arrowBtn"></i></li>
+                        <div class="calendar">
+                            <label>Exam Timetable</label>
+                            <select id="examTimetable">
+                                <option value="examMidterm">Midterm</option>
+                                <option value="examFinal">Final</option>
+                            </select>
+                            <label>Class Timetable</label>
+                            <select id="classTimetable">
+                                <option value="classMidterm">Midterm</option>
+                                <option value="classFinal">Final</option>
+                            </select>
+                        </div>
+                        
+                        <li><a href="/assignments/{{ user_id}}">Assignment</a></li>
+                        <li><i class="fa-solid fa-user" id="login"></i></li>
+                    </ul>
+                </nav>
+
+                <div class="dropdown" id="bar">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <div class="student-info">
+                    <p id="name">Nay Chi Shunn Lei</p>
+                    <span class="date">8</span>
+                    <!-- <span class="time">0</span> -->
+                </div>
+
+                
+            </div>
+        </header>
+        <section id="info">
+            <h3>Student Information</h3>
+            <img src="/static/img/id_photo.jpg" class="profile"/>
+            <table>
+                
+                <tr>
+                    <td>Student ID</td>
+                    <td id="stuId">66011534</td>
+                </tr>
+                <tr>
+                    <td>Citizen ID</td>
+                    <td>MH039650</td>
+                </tr>
+                <tr>
+                    <td>Prename</td>
+                    <td>Ms</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>Nay Chi Shunn Lei</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>25 Feb 2002</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>Female</td>
+                </tr>
+                <tr>
+                    <td>Year of Admission</td>
+                    <td>2566</td>
+                </tr>
+                <tr>
+                    <td>Study Year</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Faculty</td>
+                    <td>Engineering</td>
+                </tr>
+                <tr>
+                    <td>Program</td>
+                    <td>Software Engineering (International Program)</td>
+                </tr>
+            </table>
+        </section>
+    </body>
+    <script type="module" src="/static/student.js"></script>
+</html>

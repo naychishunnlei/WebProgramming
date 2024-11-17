@@ -1,0 +1,38 @@
+.assignment-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.assignment-header a {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.assignment-details p {
+    margin: 5px 0;
+}
+
+.assignment-status {
+    margin: 10px 0;
+}
+
+.status.completed {
+    color: green;
+}
+
+.status.pending {
+    color: red;
+}
+
+.assignment-upload form {
+    display: flex;
+    flex-direction: column;
+}
+
+.assignment-upload input[type="file"] {
+    margin-bottom: 10px;
+}

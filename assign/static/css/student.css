@@ -1,0 +1,217 @@
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.nav ul{
+    position: relative;
+}
+
+
+/* .nav {
+    background-color: rgb(239, 236, 240);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed; 
+    top: 0;          
+    width: 100%;      
+    height: 130px;
+    z-index: 1000;   
+}
+
+.nav .img-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav img {
+    margin-right: 10px; 
+    width:130px;
+    height: 100px;
+}
+.nav span {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.nav ul li {
+    margin: 20px;
+    list-style-type: none;
+}
+
+.nav ul li a {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+}
+
+.nav ul li a:hover{
+    border-bottom: 2px solid rgb(240, 153, 121);
+} */
+
+.nav ul li #login{
+    cursor: pointer;
+}
+
+.dropdown{
+    display: none;
+}
+
+.calendar{
+    width: 150px;
+    height: 90px;
+    
+    border: 3px solid rgb(239, 230, 230);
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    padding: 20px 10px;
+    border-radius: 20px;
+    background-color: rgb(240, 153, 121);
+    display: none;
+    
+}
+#arrowBtn{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.calendar.active{
+    display: block;
+}
+
+.calendar label{
+    display: block;
+    padding: 5px 0;
+}
+
+#info{
+    margin-top: 150px;
+    text-align: center;
+}
+
+#info h3{
+    font-size: 25px;
+    text-transform: uppercase;
+
+}
+
+#info table{
+    margin: 0 auto;
+    text-align: left;
+}
+
+#info table tr:nth-of-type(even){
+    background-color: rgb(240, 153, 121);
+}
+
+#info table tr:nth-of-type(odd){
+    background-color: rgb(239, 236, 240);
+}
+
+#info table td{
+    padding: 10px 30px;
+    font-size: 18px;
+}
+
+.profile{
+    border-radius: 50%;
+    box-shadow: 0px 2px 10px rgb(240, 153, 121);
+    margin-bottom: 20px;
+}
+
+
+
+@media screen and (max-width: 576px){
+    .student-info{
+        display: none;
+    }
+    .calendar{
+        top:50px;
+        left: 300px;
+    }
+
+    .profile{
+        width: 150px;
+        height: 180px;
+    }
+
+    #info h3{
+        font-size: 22px;
+    }
+
+    table{
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .student-info{
+        display: none;
+    }
+
+    #nav ul li a{
+        font-size: 14px;
+    }
+
+    .calendar{
+        top:50px;
+        left: 300px;
+    }
+
+    .profile{
+        width: 180px;
+        height: 210px;
+    }
+
+    #info h3{
+        font-size: 24px;
+    }
+
+    
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+    #nav ul li a{
+        font-size: 14px;
+    }
+    .student-info{
+        margin: 0;
+        font-size: 14px;
+    }
+    .calendar{
+
+        top:50px;
+        left: 500px;
+    }
+
+    .profile{
+        width: 210px;
+        height: 240px;
+    }
+
+    #info h3{
+        font-size: 24px;
+    }
+
+}
+
+@media (min-width: 1024px) and (max-width: 1120px){
+    .student-info{
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Teacher session</title>
+        <link href="/static/teacher.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link href="/static/student.css" rel="stylesheet" type="text/css"/> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="nav">
+            <div class="img-container">
+                <img src="/static/img/SE_logo_tranparent.svg"/>
+                <div class="text-container">
+                    <span class="title-span">Software Engineering</span>
+                    <span class="kmitl">King Mongkut's Institute of Technology</span>
+                </div>   
+            </div>
+           <nav>
+                <ul>
+                    <li><i class="fa-solid fa-bars" id="bar"></i></li>
+                    <li><i class="fa-solid fa-user" id="logoutBtn"></i></li>
+                
+                </ul>
+           </nav>
+           <div id="logout" class="logout">
+                <a href="/">Profile</a>
+                <a href="/logout">Logout</a>
+           </div>
+        </div>
+        <div class="course" id="course">
+            <ul class="courseUl">
+                <li><a href="#python" class="course-li">Python</a></li>
+                <li><a href="#rust" class="course-li">Rust</a></li>
+                <li><a href="#c++"  class="course-li">C++</a></li>
+                <li><a href="#web"  class="course-li">Web Programming</a></li>
+            </ul>
+        </div>
+        <!-- <h3 id="courseTitle">Select a course to view assignments</h3> -->
+        <div class="image-container">
+            <img src="{% if course_name %}/static/img/{{ course_name | lower }}-banner.png{% else %}/static/img/default-banner.png{% endif %}" 
+            alt="{{ course_name | default('Default') }} Banner" 
+            class="img"  
+            onerror="this.onerror=null; this.src=this.src.replace('.png', '.jpg'); this.onerror=function(){ this.src='/static/img/default-banner.png'; }" />
+        </div>
+
+        <div class="assingment" id="assignment">
+            
+            
+            {% if active_page == "details" %}
+            <div class="details-box">
+                <h3>Title : {{ assignment.name }}</h3>
+                <p>Course Name : {{ assignment.course }}</p>
+                <p>Attachment : {{ assignment.file }}</p>
+                <p>Due Date : {{ assignment.due_date }}</p>
+                <p>Total Score : {{ assignment.score }}</p>
+                <p>Description : {{ assignment.description }}</p>
+            </div>
+
+
+            {% elif active_page == "list" %}
+            <h3 class="title" id="courseTitle">Select a course to view assignments</h3> 
+            <div class="addAssignment">
+                <button id="addBtn">ADD ASSIGNMENT +</button>
+            </div>
+            {% for course, assignments in assignments_by_course.items() %}
+                <div class="course-assignments" id="assignmentBox" data-course="{{ course }}" style="display: none;">
+                    {% for assignment in assignments %}
+                        <div class="assignment-box box">
+                            <h4>{{ assignment.name }}</h4>
+                            <div class="icons">
+                                <a href="/assignment/{{ course }}/{{ assignment.id }}"><i class="fa-solid fa-circle-info"></i></a>
+                                <a href=""><i class="fa-solid fa-check"></i></a>
+                                <a href="/assignment/edit/{{ course }}/{{ assignment.id }}"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="/assignment/remove/{{ course }}/{{ assignment.id }}"><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+
+            {% elif active_page == "grade" %}
+            <div>
+                <h3>Title : {{ assignment.name }}</h3>
+                <p>Course Name : {{ assignment.course }}</p>
+                <p>Attachment : {{ assignment.file }}</p>
+                <p>Due Date : {{ assignment.due_date }}</p>
+                <p>Total Score : {{ assignment.score }}</p>
+                <p>Description : {{ assignment.description }}</p>
+            </div> 
+    
+            {% elif active_page == "edit" %}
+            <div class="edit-box">
+                <form action="/assignment/upload" method="post" enctype="multipart/form-data">
+                            
+                    <input type="hidden" name="assignment_id" value="{{ assignment.id }}"/>
+                        
+                    <h3>Edit Assignment {{ assignment.name }}</h3>
+                        
+                    <label for="name">Assignment name</label>
+                    <input type="text" id="name" name="assignmentName" value="{{ assignment.name }}"/>
+                        
+                    <label for="subject">Course Name</label>
+                    <input type="text" id="subject" name="courseName" value="{{ assignment.course }}"/>
+                        
+                    <label for="file" class="file">Attachment Files
+                    <input type="file" id="file" name="file"/>
+                    </label>
+                        
+                    <label for="date">DUE DATE (dd-mm-yyyy)</label>
+                        <input type="date" id="date" name="dueDate" value="{{ assignment.due_date }}"/>
+                        
+                    <label for="score">Score</label>
+                        <input type="number" id="score" name="score" value="{{ assignment.score }}"/>
+                        
+                    <label>Description</label>
+                        <textarea id="description" name="description">{{ assignment.description }}</textarea>
+                        <button type="submit" class="submit-btn">Update Assignment</button>
+                </form>        
+            </div>
+            {% else %}
+           
+            <h3 class="title" id="courseTitle">Select a course to view assignments</h3> 
+            <div class="addAssignment">
+                <button id="addBtn">ADD ASSIGNMENT +</button>
+            </div>
+            {% endif %}
+            
+           
+            <div class="modal">
+                <i class="fa-solid fa-x" id="closeBtn"></i>
+                <form id="assignment-form" action="/addAssignment" method="post" enctype="multipart/form-data">
+                    <h3>Add Assignment</h3>
+                    <label for="name">Assignment name</label>
+                    <input type="text" id="name" name="assignmentName"/>
+                    <label for="subject">Course Name</label>
+                    <input type="text" id="subject" name="courseName"/>
+                    <label for="file" class="file">Attachment Files
+                        <input type="file" id="file" name="file"/>
+                    </label>
+                   
+                    <label for="date">DUE DATE(dd-mm-yyyy)</label>
+                    <input type="date" id="date" name="dueDate"/>
+                    <label for="score">Score</label>
+                    <input type="number" id="score" name="score"/>
+                    <label>Description</label>
+                    <textarea id="description" name="description"></textarea>
+                    <button type="submit" class="submit-btn">Upload Assignment</button>
+                </form>
+            </div>
+        </div>
+
+       
+        <script src="/static/js/teacher.js"></script>
+    </body>
+    
+</html> 
+
+ 

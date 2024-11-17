@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course['name'] }} - Assignments</title>
+    <link rel="stylesheet" href="/static/css/assignment.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="img-container">
+            <img src="/static/img/SE_logo_tranparent.svg"/>
+            <span>Software Engineering</span>
+        </div>
+    </div>
+    
+    <h1>Assignments for {{ course['name'] }}</h1>
+
+    <div id="course-name" style="display: none;">{{ course['name'] }}</div>
+
+    <ul id="assignment-list">
+        <!-- Render Assignments Dynamically -->
+        {% for assignment in assignments %}
+            <li>
+                <div>
+                    <strong>{{ assignment.title }}</strong> - Due: {{ assignment.due_date }}
+                    <p>{{ assignment.description }}</p>
+
+                    <!-- Submit button for each assignment -->
+                    <button class="submit-btn" onclick="openSubmitForm({{ assignment.id }}, '{{ assignment.name | escape }}', '{{ assignment.due_date }}', '{{ assignment.description | escape }}')">
+                        Submit Assignment
+                    </button>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Modal for Assignment Submission -->
+    <div id="submit-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeSubmitForm()">&times;</span>
+            <h2>Submit Assignment</h2>
+            <form id="submit-form" action="/submit-assignment" method="POST" enctype="multipart/form-data">
+                <input type="hidden" id="assignment-id" name="assignment_id">
+                
+                <!-- Display assignment title, due date, and description as read-only -->
+                <label for="assignment-name">Assignment Title</label>
+                <input type="text" id="assignment-name" name="assignment_name" readonly>
+
+                <label for="assignment-due-date">Due Date</label>
+                <input type="text" id="assignment-due-date" name="assignment_due_date" readonly>
+
+                <label for="assignment-description">Description</label>
+                <textarea id="assignment-description" name="assignment_description" readonly></textarea>
+
+                <!-- File upload and comment section -->
+                <label for="upload-file">Upload Your Assignment</label>
+                <input type="file" id="upload-file" name="file" required>
+
+                <label for="comment">Comment</label>
+                <textarea id="comment" name="comment"></textarea>
+
+                <button type="submit">Submit Assignment</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Software Engineering Department. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/js/course_detail.js"></script>
+</body>
+</html>

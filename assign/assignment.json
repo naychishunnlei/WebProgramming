@@ -1,0 +1,14 @@
+[
+    {
+        "course": "Math",
+        "title": "Homework 1",
+        "due_date": "2024-10-15",
+        "description": "Complete exercises 1-10."
+    },
+    {
+        "course": "History",
+        "title": "Essay",
+        "due_date": "2024-10-12",
+        "description": "Write an essay about World War II."
+    }
+]
